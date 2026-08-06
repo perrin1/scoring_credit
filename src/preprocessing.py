@@ -17,8 +17,13 @@ SYNONYMES = {"sexe": {"Feminin": "F", "Masculin": "M"},
 SEUIL_ERREUR_UNITE = 2_000_000
 
 
-def nettoyer(df: pd.DataFrame) -> pd.DataFrame:
-    """Applique les corrections des parties A2 a A6. Ne modifie pas l'entree."""
+def nettoyer(df: pd.DataFrame, garder_fuite: bool = False) -> pd.DataFrame:
+    """Applique les corrections des parties A2 a A6. Ne modifie pas l'entree.
+
+    garder_fuite=True conserve nb_relances_recouvrement et statut_dossier —
+    reserve a l'experience demandee en section 3 de la consigne (comparaison
+    avec/sans). Le modele livre doit toujours utiliser la valeur par defaut.
+    """
     df = df.copy()
 
     # A4  harmonisation des categorielles (avant A2 : le parsing des dates
@@ -50,6 +55,8 @@ def nettoyer(df: pd.DataFrame) -> pd.DataFrame:
         df["anciennete_activite_mois"] = df["anciennete_activite_mois"].where(
             df["anciennete_activite_mois"] <= plafond, plafond)
 
+    if garder_fuite:
+        return df
     return df.drop(columns=[c for c in COLS_FUITE if c in df])
 
 
@@ -92,6 +99,6 @@ def ajouter_variables_derivees(df: pd.DataFrame) -> pd.DataFrame:
     return df.replace([np.inf, -np.inf], np.nan)
 
 
-def preparer(df: pd.DataFrame) -> pd.DataFrame:
+def preparer(df: pd.DataFrame, garder_fuite: bool = False) -> pd.DataFrame:
     """Chaine complete : nettoyage puis variables derivees."""
-    return ajouter_variables_derivees(nettoyer(df))
+    return ajouter_variables_derivees(nettoyer(df, garder_fuite=garder_fuite))
