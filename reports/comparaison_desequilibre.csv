@@ -1,0 +1,5 @@
+approche,cv_roc_auc,cv_ecart_type,test_roc_auc
+1. aucun traitement,0.8484,0.0126,0.8323
+2. class_weight='balanced',0.8491,0.0128,0.8331
+3. sous-echantillonnage,0.8446,0.0112,0.8309
+4. SMOTE,0.8465,0.013,0.8286

@@ -1,0 +1,3 @@
+configuration,cv_roc_auc,test_roc_auc,test_pr_auc
+AVEC les colonnes de fuite,1.0,1.0,1.0
+SANS (modele retenu),0.8491,0.8331,0.5095

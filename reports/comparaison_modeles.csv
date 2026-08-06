@@ -1,0 +1,4 @@
+modele,cv_roc_auc,cv_ecart_type,test_roc_auc,test_pr_auc
+Regression logistique,0.8491,0.0128,0.8331,0.5095
+Foret aleatoire,0.8456,0.0135,0.8144,0.4709
+HistGradientBoosting,0.8375,0.0163,0.8103,0.4894
