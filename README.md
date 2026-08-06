@@ -247,8 +247,7 @@ exige une hypothèque **quand le dossier est jugé risqué**.
 
 ![Tableau de bord Streamlit](reports/capture_app.png)
 
-> Pour la produire : `streamlit run app/streamlit_app.py`, puis capture de l'onglet
-> **Simulateur** enregistrée sous `reports/capture_app.png`.
+
 
 ---
 
